@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create new user</title>
+</head>
+
+<body>
+
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
+  <label for="name">Имя: </label>
+  <input type="text" th:field="*{name}" id="name"/>
+  <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+  <br/>
+  <br/>
+  <label for="surname">Фамилия: </label>
+  <input type="text" th:field="*{lastName}" id="surname"/>
+  <br/>
+  <br/>
+  <label for="age">Возраст: </label>
+  <input type="text" th:field="*{age}" id="age"/>
+  <br/>
+  <br/>
+  <label for="nation">Национальность: </label>
+  <input type="text" th:field="*{national}" id="nation"/>
+  <br/>
+  <br/>
+  <label for="username">Имя пользователя: </label>
+  <input type="text" th:field="*{userName}" id="username"/>
+  <div th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></div>
+  <br/>
+  <br/>
+  <label for="password">Пароль: </label>
+  <input type="text" th:field="*{password}" id="password"/>
+  <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+  <br/>
+  <br/>
+  <label>Права доступа:
+    <select size="2" multiple name="roles" required="required">
+      <option  value="1">ADMIN</option>
+      <option selected="selected" value="2">USER</option>
+    </select>
+  </label>
+  <br/>
+  <br/>
+  <input type="submit" value="Создать"/>
+</form>
+
+</body>
+</html>
