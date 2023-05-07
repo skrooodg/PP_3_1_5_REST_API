@@ -65,6 +65,6 @@ public class UserServiceImp implements UserDetailsService, UserService {
     }
     @Override
     public void delete(Long id) {
-        userJpaRep.deleteById(id);
+        userJpaRep.delete(userJpaRep.findById(id).get());
     }
 }

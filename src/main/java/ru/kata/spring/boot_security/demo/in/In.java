@@ -14,13 +14,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Component
-public class in implements CommandLineRunner {
+public class In implements CommandLineRunner {
     private final UserJpaRep userJpaRep;
     private final RoleJpaRep roleJpaRep;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public in (UserJpaRep userJpaRep, RoleJpaRep roleJpaRep, PasswordEncoder passwordEncoder) {
+    public In(UserJpaRep userJpaRep, RoleJpaRep roleJpaRep, PasswordEncoder passwordEncoder) {
         this.userJpaRep = userJpaRep;
         this.roleJpaRep = roleJpaRep;
         this.passwordEncoder = passwordEncoder;
@@ -39,8 +39,8 @@ public class in implements CommandLineRunner {
 
 
         // пользователи Admin  и User
-        User userAdmin = new User(1l,"Kirill", "Yuni", 10, "aasf","admin", passwordEncoder.encode("admin"), adminRoles);
-        User userUser = new User(2l, "Regina", "Uni", 25, "TAT", "user", passwordEncoder.encode("user"), userRoles);
+        User userAdmin = new User(1l,"Kirill", "Yuni", 10,"admin", passwordEncoder.encode("admin"), adminRoles);
+        User userUser = new User(2l, "Regina", "Uni", 25, "user", passwordEncoder.encode("user"), userRoles);
         System.out.println(userAdmin);
         userJpaRep.save(userAdmin);
         System.out.println(userUser);

@@ -22,13 +22,11 @@ public class User implements UserDetails {
     private String lastName;
     @Column(name = "Age")
     private int age;
-    @Column(name = "Nation")
-    private String national;
-    @Column(name = "Username")
+    @Column(name = "email")
     private String userName;
     @Column(name = "Password")
     private String password;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
@@ -36,15 +34,27 @@ public class User implements UserDetails {
 
     public User() {
     }
-    public User(Long id, String name, String lastName, int age, String national, String userName, String password, Set<Role> roles) {
+    public User(Long id, String name, String lastName, int age, String userName, String password, Set<Role> roles) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.age = age;
-        this.national = national;
         this.userName = userName;
         this.password = password;
         this.roles = roles;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", age=" + age +
+                ", userName='" + userName + '\'' +
+                ", password='" + password + '\'' +
+                ", roles=" + roles +
+                '}';
     }
 
     public Long getId() {
@@ -78,15 +88,6 @@ public class User implements UserDetails {
     public void setAge(int age) {
         this.age = age;
     }
-
-    public String getNational() {
-        return national;
-    }
-
-    public void setNational(String national) {
-        this.national = national;
-    }
-
     public String getUserName() {
         return userName;
     }
