@@ -23,7 +23,6 @@ public class AuthController {
 public String showUser(Model model, Principal principal) {
     User user = userService.findByName(principal.getName());
     model.addAttribute("user", userService.getUser(user.getId()));
-    System.out.println("Успешно: user id" + user.getClass());
     model.addAttribute("titleTable", "Страница пользователя: ");
     return "user";
     }

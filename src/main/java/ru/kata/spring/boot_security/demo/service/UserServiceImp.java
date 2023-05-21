@@ -23,6 +23,7 @@ public class UserServiceImp implements UserDetailsService, UserService {
         this.userJpaRep = userJpaRep;
         this.passwordEncoder = passwordEncoder;
     }
+
     @Transactional
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -38,10 +39,12 @@ public class UserServiceImp implements UserDetailsService, UserService {
     public List<User> findAll() {
         return userJpaRep.findAll();
     }
+
     @Override
     public User findOne(Long id) {
         return userJpaRep.findById(id).orElseThrow();
     }
+
     public User findByName(String username) {
         return userJpaRep.findByUserName(username);
     }
@@ -57,12 +60,14 @@ public class UserServiceImp implements UserDetailsService, UserService {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userJpaRep.save(user);
     }
+
     @Override
     @Transactional
     public void update(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         userJpaRep.save(user);
     }
+
     @Override
     public void delete(Long id) {
         userJpaRep.delete(userJpaRep.findById(id).get());
