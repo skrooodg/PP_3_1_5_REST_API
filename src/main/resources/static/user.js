@@ -3,7 +3,7 @@ const userUrl = '/api/user';
 const userAuth = fetch(userUrl).then(response => response.json())
 userAuth.then(user => {
         let roles = ''
-        user.roles.forEach(r => {
+        user.role.forEach(r => {
             roles += ' '
             roles += r.name
         })
@@ -24,12 +24,9 @@ async function getUserPage() {
 
 function getInformationAboutUser(user) {
     const tableBody = document.getElementById('userTableBody');
-    let dataHtml = '';
+    let res = '';
     let roles = [];
-    for (let role of user.roles) {
-        roles.push(" " + role.name
-            .replaceAll("ROLE_", ""))
-    }
+
     res =
         `<tr>
     <td>${user.id}</td>
