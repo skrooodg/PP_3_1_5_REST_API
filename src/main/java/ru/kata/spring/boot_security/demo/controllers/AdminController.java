@@ -3,8 +3,6 @@ package ru.kata.spring.boot_security.demo.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.model.User;
@@ -37,55 +35,55 @@ public class AdminController {
         return "admin";
     }
 
-    @GetMapping("/{id}")
-    public String showUser(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userServiceImp.findOne(id));
-        model.addAttribute("titleTable", "Страница пользователя:");
-        return "user";
-    }
-
-    @GetMapping("/addUser")
-    public String addNewUser(Model model, @ModelAttribute("user") User user) {
-        List<Role> roles = roleServiceImp.getRoles();
-        model.addAttribute("rolesAdd", roles);
-        return "creation";
-    }
-
-    @PostMapping("/user-creation")
-    public String addCreateNewUser(User user) {
-        try {
-            userServiceImp.save(user);
-        } catch (Exception er) {
-            System.err.println("Пользователь с таким email уже существует!");
-        }
-        return "redirect:/admin";
-    }
-
-    @PatchMapping("/user-update")
-    public String updateUser(User user) {
-        try {
-            userServiceImp.update(user);
-        } catch (Exception e) {
-            System.err.println("Пользователь с таким логином уже существует!");
-        }
-        return "redirect:/admin";
-    }
-
-    @GetMapping("/user-update/{id}")
-    public String updateUserForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userServiceImp.getUser(id));
-        return "admin";
-    }
-
-    @GetMapping("/delete/{id}")
-    public String deleteUserForm(@PathVariable("id") Long id, Model model) {
-        model.addAttribute("user", userServiceImp.getUser(id));
-        return "admin";
-    }
-
-    @DeleteMapping("/user-delete")
-    public String deleteUser(Long id) {
-        userServiceImp.delete(id);
-        return "redirect:/admin";
-    }
+//    @GetMapping("/{id}")
+//    public String showUser(@PathVariable("id") Long id, Model model) {
+//        model.addAttribute("user", userServiceImp.findOne(id));
+//        model.addAttribute("titleTable", "Страница пользователя:");
+//        return "user";
+//    }
+//
+//    @GetMapping("/addUser")
+//    public String addNewUser(Model model, @ModelAttribute("user") User user) {
+//        List<Role> roles = roleServiceImp.getRoles();
+//        model.addAttribute("rolesAdd", roles);
+//        return "creation";
+//    }
+//
+//    @PostMapping("/user-creation")
+//    public String addCreateNewUser(User user) {
+//        try {
+//            userServiceImp.save(user);
+//        } catch (Exception er) {
+//            System.err.println("Пользователь с таким email уже существует!");
+//        }
+//        return "redirect:/admin";
+//    }
+//
+//    @PatchMapping("/user-update")
+//    public String updateUser(User user) {
+//        try {
+//            userServiceImp.update(user);
+//        } catch (Exception e) {
+//            System.err.println("Пользователь с таким логином уже существует!");
+//        }
+//        return "redirect:/admin";
+//    }
+//
+//    @GetMapping("/user-update/{id}")
+//    public String updateUserForm(@PathVariable("id") Long id, Model model) {
+//        model.addAttribute("user", userServiceImp.getUser(id));
+//        return "admin";
+//    }
+//
+//    @GetMapping("/delete/{id}")
+//    public String deleteUserForm(@PathVariable("id") Long id, Model model) {
+//        model.addAttribute("user", userServiceImp.getUser(id));
+//        return "admin";
+//    }
+//
+//    @DeleteMapping("/user-delete")
+//    public String deleteUser(Long id) {
+//        userServiceImp.delete(id);
+//        return "redirect:/admin";
+//    }
 }

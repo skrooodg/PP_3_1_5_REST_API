@@ -17,14 +17,10 @@
 <!--  NAVBAR-->
 <nav class="navbar navbar-dark bg-dark">
     <div class="container-fluid">
-        <div>
-            <a class="navbar-brand">
-                <strong id="navbar-email" th:font="bold"></strong>
-                with roles:
-                <span id="navbar-roles"></span>
-            </a>
-        </div>
-        <a th:href="@{/login}" class="float-right btn text-secondary">Logout</a>
+        <span class="navbar-brand mb-0 h1"
+              th:text="${princ.userName} + '  with role:  ' + ${princ.role}">
+        </span>
+        <a class="nav-link active" aria-current="page" th:href="@{/login}">Logout</a>
     </div>
 </nav>
 <!--Navbar close -->
@@ -32,6 +28,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="d-flex align-items-start">
+
+            <!--Столбики выбора ADMIN/USER-->
             <div class="col-md-2">
                 <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button class="nav-link active"
@@ -55,6 +53,9 @@
                     </button>
                 </div>
             </div>
+            <!--Столбики выбора ADMIN/USER КОНЕЦ-->
+
+            <!--Таблица-->
             <div class="col-md-10">
                 <div class="tab-content" id="v-pills-tabContent">
                     <div class="tab-pane fade show active"
@@ -82,6 +83,8 @@
                                 </li>
                             </ul>
                             <div class="tab-content" id="Admin_panel-tabContent">
+
+                                <!--Вкладка со всеми пользователями-->
                                 <div class="tab-pane fade show active" id="userTab" role="tabpanel"
                                      aria-labelledby="user_table-tab">
                                     <div>
@@ -104,8 +107,9 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <!--Вкладка со всеми пользователями КОНЕЦ-->
 
-
+                                <!--Вкладка создания пользователя-->
                                 <div class="tab-pane fade" id="new_user" role="tabpanel" aria-labelledby="profile-tab">
                                     <div class="container-fluid">
                                         <div class="row">
@@ -166,34 +170,50 @@
                                         </div>
                                     </div>
                                 </div>
+                                <!--Вкладка создания пользователя КОНЕЦ-->
+
                             </div>
                         </div>
                     </div>
+                    <!-- Вкладка User-->
                     <div class="tab-pane fade"
                          id="v-pills-user"
                          role="tabpanel"
                          aria-labelledby="v-pills-user-tab"
                          tabindex="0">
                         <div>
-                            <h5>User information-page</h5>
+                            <h4>User information-page</h4>
                         </div>
-                        <table class="table table-striped" style="background-color: #F7F7F7">
-                            <thead>
+                        <table class="table table-striped table-bordered table-hover caption-top">
+                            <thead class="table-while">
                             <tr>
-                                <th scope="col">ID</th>
-                                <th scope="col">First name</th>
-                                <th scope="col">Last name</th>
-                                <th scope="col">Age</th>
-                                <th scope="col">Email</th>
-                                <th scope="col">Role</th>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Last Name</th>
+                                <th>Age</th>
+                                <th>Email</th>
+                                <th>Roles</th>
                             </tr>
                             </thead>
-                            <tbody id="usertbody">
+                            <tbody>
+                            <tr>
+                                <td th:text="${princ.id}"></td>
+                                <td th:text="${princ.name}"></td>
+                                <td th:text="${princ.lastName}"></td>
+                                <td th:text="${princ.age}"></td>
+                                <td th:text="${princ.username}"></td>
+                                <td th:text="${princ.role}"></td>
+                            </tr>
                             </tbody>
                         </table>
                     </div>
+                    <!--Вкладка User КОНЕЦ-->
                 </div>
             </div>
+            <!--Таблица-->
+
+
+            <!--Модальное окно EDIT-->
             <div class="modal fade"
                  id="editModal" tabindex="-1">
                 <div class="modal-dialog">
@@ -289,7 +309,9 @@
                     </div>
                 </div>
             </div>
+            <!--Модальное окно EDIT КОНЕЦ-->
 
+            <!--Модальное окно DELETE-->
             <div class="modal fade"
                  id="deleteModal" tabindex="-1">
                 <div class="modal-dialog">
@@ -367,9 +389,10 @@
                     </div>
                 </div>
             </div>
+            <!--Модальное окно DELETE КОНЕЦ-->
+
         </div>
     </div>
-
 </div>
 
 

@@ -1,20 +1,6 @@
-const url = 'http://localhost:8080/admin';
-const currentUser = fetch(url).then(response => response.json())
-
-// const addNewUserForm = document.getElementById('NewUserForm');
-// const role_new = document.querySelector('#roles').selectedOptions;
+const url = 'http://localhost:8080/api/admin';
 
 
-currentUser.then(user => {
-        let roles = ''
-        user.role.forEach(r => {
-            roles += ' '
-            roles += r.role
-        })
-        document.getElementById("navbar-email").innerHTML = user.userName
-        document.getElementById("navbar-roles").innerHTML = roles
-    }
-)
 function getAllUsers() {
     fetch(url)
         .then(res => res.json())
@@ -23,14 +9,9 @@ function getAllUsers() {
         })
 }
 
-async function getAdminPage() {
-    let page = await fetch(url);
-    if(page.ok) {
-        let listAllUsers = await  page.json();
-        loadTable(listAllUsers);
-    } else {
-        alert(`Error, ${page.status}`)
-    }
+function getAdminPage() {
+   fetch(url).then(response => response.json()).then(user =>
+        loadTable(user))
 }
 function loadTable(listAllUsers) {
     const tableBody = document.getElementById('tableBodyAdmin');
@@ -47,22 +28,19 @@ function loadTable(listAllUsers) {
                 <td>${user.userName}</td>
                 <td>${roles}</td>
                 <td>
-                    <button type="button" class="btn btn-primary" data-bs-toogle="modal"
-                    data-bs-target="#editModal" 
-                        >Edit</button>
-                </td>
+                    <button class="btn btn-info" type="button"
+                    data-bs-toggle="modal" data-bs-target="#modalEdit"
+                    onclick="editModal(${user.id})">Edit</button></td>
                 <td>
-                    <button class="btn btn-danger" data-bs-toogle="modal"
-                    data-bs-target="#deleteModal" 
-                        >Delete</button>
-                </td>
+                    <button class="btn btn-danger" type="button"
+                    data-bs-toggle="modal" data-bs-target="#modalDelete"
+                    onclick="deleteModal(${user.id})">Delete</button></td>
    
             </tr>`
     }
     tableBody.innerHTML = res;
 }
 getAdminPage();
-getUserPage();
 
 
 
@@ -118,26 +96,26 @@ document.getElementById('newUserForm').addEventListener('submit', (e) => {
     document.getElementById("profile-tab").click()
 })
 
-function getRoles(rols) {
-    let roles = [];
-    if (rols.indexOf("ADMIN") >= 0) {
-        roles.push({
-            "id": 1,
-            "name": "ROLE_ADMIN",
-            "users": null,
-            "authority": "ROLE_ADMIN"
-        });
-    }
-    if (rols.indexOf("USER") >= 0) {
-        roles.push({
-            "id": 2,
-            "name": "ROLE_USER",
-            "users": null,
-            "authority": "ROLE_USER"
-        });
-    }
-    return roles;
-}
+// function getRoles(rols) {
+//     let roles = [];
+//     if (rols.indexOf("ADMIN") >= 0) {
+//         roles.push({
+//             "id": 1,
+//             "name": "ROLE_ADMIN",
+//             "users": null,
+//             "authority": "ROLE_ADMIN"
+//         });
+//     }
+//     if (rols.indexOf("USER") >= 0) {
+//         roles.push({
+//             "id": 2,
+//             "name": "ROLE_USER",
+//             "users": null,
+//             "authority": "ROLE_USER"
+//         });
+//     }
+//     return roles;
+// }
 
 //Редактирование пользователя
 function editModal(id) {
@@ -167,7 +145,7 @@ async function editUser() {
     let ageValue = document.getElementById('editAge').value;
     let emailValue = document.getElementById("editEmail").value;
     let passwordValue = document.getElementById("editPassword").value;
-    let roles = getRoles(Array.from(document.getElementById("editRole").selectedOptions).map(role => role.value));
+    // let roles = getRoles(Array.from(document.getElementById("editRole").selectedOptions).map(role => role.value));
 
     let user = {
         id: idValue,
@@ -176,7 +154,7 @@ async function editUser() {
         age: ageValue,
         userName: emailValue,
         password: passwordValue,
-        roles: roles
+        // roles: roles
     }
 
     await fetch(url, {
