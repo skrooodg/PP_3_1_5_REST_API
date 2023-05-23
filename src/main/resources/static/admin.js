@@ -35,7 +35,6 @@ function loadTable(listAllUsers) {
                     <button class="btn btn-danger" type="button"
                     data-bs-toggle="modal" data-bs-target="#modalDelete"
                     onclick="deleteModal(${user.id})">Delete</button></td>
-   
             </tr>`
     }
     tableBody.innerHTML = res;
@@ -158,7 +157,7 @@ async function editUser() {
     }
 
     await fetch(url, {
-        method: "PUT",
+        method: "PATCH",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json;charset=UTF-8'

@@ -36,7 +36,7 @@ public class RestAPIController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PutMapping("/admin/{id}")
+    @PatchMapping("/admin/{id}")
     public ResponseEntity<HttpStatus> updateUser(@RequestBody User user, @PathVariable Long id) {
         userServiceImp.update(user);
         return new ResponseEntity<>(HttpStatus.OK);
