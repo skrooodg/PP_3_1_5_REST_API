@@ -170,8 +170,8 @@ getAllUsers()
 
 
 // Удаление пользователя
-function deleteModal(id) {
-    fetch(url + '/' + id, {
+function deleteModal() {
+    fetch(url + '/' + document.getElementById('editId').value, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json;charset=UTF-8'
@@ -196,7 +196,7 @@ async function deleteUser() {
         }
     }
 
-    await (urlDel, method).then(() => {
+    fetch(urlDel, method).then(() => {
         document.getElementById("deleteBtn").click();
     })
     getAllUsers()

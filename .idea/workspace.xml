@@ -7,6 +7,7 @@
     <list default="true" id="e1d56e32-feff-4ca3-a5ce-b8f81bc4b03c" name="Changes" comment="не работает">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/admin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/admin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/admin.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +107,7 @@
       <workItem from="1684317684436" duration="13445000" />
       <workItem from="1684512667173" duration="41185000" />
       <workItem from="1684912004949" duration="5057000" />
-      <workItem from="1685200387074" duration="4374000" />
+      <workItem from="1685200387074" duration="5651000" />
     </task>
     <task id="LOCAL-00001" summary="finish">
       <created>1683455843489</created>
@@ -157,7 +158,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685206842347</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="не работает">
+      <created>1685209016004</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1685209016004</updated>
+    </task>
+    <task id="LOCAL-00009" summary="не работает">
+      <created>1685209155698</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1685209155698</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
