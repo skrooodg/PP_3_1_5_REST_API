@@ -61,10 +61,15 @@ public class UserServiceImp implements UserDetailsService, UserService {
         userJpaRep.save(user);
     }
 
-    @Override
     @Transactional
     public void update(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User oldUser = userJpaRep.findById(user.getId()).get();
+        String oldPassword = oldUser.getPassword();
+        if (user.getPassword() == null || user.getPassword().isEmpty()) {
+            user.setPassword(oldPassword);
+        }else {
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+        }
         userJpaRep.save(user);
     }
 

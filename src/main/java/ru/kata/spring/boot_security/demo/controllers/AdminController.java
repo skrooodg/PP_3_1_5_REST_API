@@ -35,55 +35,55 @@ public class AdminController {
         return "admin";
     }
 
-//    @GetMapping("/{id}")
-//    public String showUser(@PathVariable("id") Long id, Model model) {
-//        model.addAttribute("user", userServiceImp.findOne(id));
-//        model.addAttribute("titleTable", "Страница пользователя:");
-//        return "user";
-//    }
-//
+    @GetMapping("/{id}")
+    public String showUser(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("user", userServiceImp.findOne(id));
+        model.addAttribute("titleTable", "Страница пользователя:");
+        return "user";
+    }
+
 //    @GetMapping("/addUser")
 //    public String addNewUser(Model model, @ModelAttribute("user") User user) {
 //        List<Role> roles = roleServiceImp.getRoles();
 //        model.addAttribute("rolesAdd", roles);
 //        return "creation";
 //    }
-//
-//    @PostMapping("/user-creation")
-//    public String addCreateNewUser(User user) {
-//        try {
-//            userServiceImp.save(user);
-//        } catch (Exception er) {
-//            System.err.println("Пользователь с таким email уже существует!");
-//        }
-//        return "redirect:/admin";
-//    }
-//
+
+    @PostMapping("/user-creation")
+    public String addCreateNewUser(User user) {
+        try {
+            userServiceImp.save(user);
+        } catch (Exception er) {
+            System.err.println("Пользователь с таким email уже существует!");
+        }
+        return "redirect:/admin";
+    }
+
 //    @PatchMapping("/user-update")
-//    public String updateUser(User user) {
+//    public String updateUser(Long id) {
 //        try {
-//            userServiceImp.update(user);
+//            userServiceImp.update(id);
 //        } catch (Exception e) {
 //            System.err.println("Пользователь с таким логином уже существует!");
 //        }
 //        return "redirect:/admin";
 //    }
-//
-//    @GetMapping("/user-update/{id}")
-//    public String updateUserForm(@PathVariable("id") Long id, Model model) {
-//        model.addAttribute("user", userServiceImp.getUser(id));
-//        return "admin";
-//    }
-//
-//    @GetMapping("/delete/{id}")
-//    public String deleteUserForm(@PathVariable("id") Long id, Model model) {
-//        model.addAttribute("user", userServiceImp.getUser(id));
-//        return "admin";
-//    }
-//
-//    @DeleteMapping("/user-delete")
-//    public String deleteUser(Long id) {
-//        userServiceImp.delete(id);
-//        return "redirect:/admin";
-//    }
+
+    @GetMapping("/user-update/{id}")
+    public String updateUserForm(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("user", userServiceImp.getUser(id));
+        return "admin";
+    }
+
+    @GetMapping("/delete/{id}")
+    public String deleteUserForm(@PathVariable("id") Long id, Model model) {
+        model.addAttribute("user", userServiceImp.getUser(id));
+        return "admin";
+    }
+
+    @DeleteMapping("/user-delete")
+    public String deleteUser(Long id) {
+        userServiceImp.delete(id);
+        return "redirect:/admin";
+    }
 }

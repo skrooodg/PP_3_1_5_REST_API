@@ -29,11 +29,11 @@ function loadTable(listAllUsers) {
                 <td>${roles}</td>
                 <td>
                     <button class="btn btn-info" type="button"
-                    data-bs-toggle="modal" data-bs-target="#modalEdit"
+                    data-bs-toggle="modal" data-bs-target="#editModal"
                     onclick="editModal(${user.id})">Edit</button></td>
                 <td>
                     <button class="btn btn-danger" type="button"
-                    data-bs-toggle="modal" data-bs-target="#modalDelete"
+                    data-bs-toggle="modal" data-bs-target="#deleteModal"
                     onclick="deleteModal(${user.id})">Delete</button></td>
             </tr>`
     }
@@ -164,8 +164,9 @@ async function editUser() {
         },
         body: JSON.stringify(user)
     });
-    getAllUsers()
+    document.getElementById("deleteBtn").click();
 }
+getAllUsers()
 
 
 // Удаление пользователя
@@ -186,18 +187,33 @@ function deleteModal(id) {
     });
 }
 
+// async function deleteUser() {
+//     await fetch(url + '/' + document.getElementById('deleteId').value, {
+//         method: 'DELETE',
+//         headers: {
+//             'Accept': 'application/json',
+//             'Content-Type': 'application/json;charset=UTF-8'
+//         },
+//         body: JSON.stringify(document.getElementById('deleteModal').value)
+//     })
+//
+//     getAllUsers()
+//     document.getElementById("deleteBtn").click();
+// }
 async function deleteUser() {
-    await fetch(url + '/' + document.getElementById('idDeleteUser').value, {
+    let urlDel = url +"/" + document.getElementById('deleteId').value;
+    let method = {
         method: 'DELETE',
         headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json;charset=UTF-8'
-        },
-        body: JSON.stringify(document.getElementById('deleteModal').value)
-    })
+            "Content-Type": "application/json"
+        }
+    }
 
+    fetch(urlDel, method).then(() => {
+        document.getElementById("deleteBtn").click();
+    })
     getAllUsers()
-    document.getElementById("deleteBtn").click();
+
 }
 
 

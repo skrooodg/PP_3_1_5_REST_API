@@ -263,7 +263,7 @@
                                 <div class="mb-3">
                                     <label for="editEmail"
                                            class="col-form-label d-flex justify-content-center"><b>Email</b>:</label>
-                                    <input readonly type="email"
+                                    <input type="email"
                                            class="form-control"
                                            id="editEmail"
                                            name="userName">
@@ -299,7 +299,7 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" id="editBtn"
-                                    onclick="editUser(); getAdminPage()">Edit
+                                    onclick="editUser()">Edit
                             </button>
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="editClose">Close
                             </button>
@@ -379,11 +379,11 @@
                             </form>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeDelete">
-                                Close
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="closeDelete"
+                            >Close
                             </button>
                             <button type="button" class="btn btn-primary" id="deleteBtn"
-                                    onclick="deleteUser(); getAdminPage()">Delete
+                                    onclick="deleteUser();">Delete
                             </button>
                         </div>
                     </div>
