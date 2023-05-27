@@ -187,19 +187,6 @@ function deleteModal(id) {
     });
 }
 
-// async function deleteUser() {
-//     await fetch(url + '/' + document.getElementById('deleteId').value, {
-//         method: 'DELETE',
-//         headers: {
-//             'Accept': 'application/json',
-//             'Content-Type': 'application/json;charset=UTF-8'
-//         },
-//         body: JSON.stringify(document.getElementById('deleteModal').value)
-//     })
-//
-//     getAllUsers()
-//     document.getElementById("deleteBtn").click();
-// }
 async function deleteUser() {
     let urlDel = url +"/" + document.getElementById('deleteId').value;
     let method = {
