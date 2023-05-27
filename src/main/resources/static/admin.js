@@ -164,7 +164,7 @@ async function editUser() {
         },
         body: JSON.stringify(user)
     });
-    document.getElementById("deleteBtn").click();
+    document.getElementById("editBtn").click();
 }
 getAllUsers()
 
@@ -196,7 +196,7 @@ async function deleteUser() {
         }
     }
 
-    fetch(urlDel, method).then(() => {
+    await (urlDel, method).then(() => {
         document.getElementById("deleteBtn").click();
     })
     getAllUsers()
