@@ -13,7 +13,6 @@ import java.security.Principal;
 import java.util.List;
 
 @Controller
-@RequestMapping("/admin")
 public class AdminController {
     private final UserServiceImp userServiceImp;
     private final RoleServiceImp roleServiceImp;
@@ -24,7 +23,7 @@ public class AdminController {
         this.roleServiceImp = roleServiceImp;
     }
 
-    @GetMapping
+    @GetMapping("/admin")
     public String showAllUsers(Model model, Principal principal) {
         model.addAttribute("allUsers", userServiceImp.findAll());
         User princ = userServiceImp.findByName(principal.getName());
@@ -35,7 +34,12 @@ public class AdminController {
         return "admin";
     }
 
-
+    @GetMapping("/user")
+    public String showUsers(Model model, Principal principal) {
+        User princ = userServiceImp.findByName(principal.getName());
+        model.addAttribute("princ", princ);
+        return "user";
+    }
 //    @GetMapping("/{id}")
 //    public String showUser(@PathVariable("id") Long id, Model model) {
 //        model.addAttribute("user", userServiceImp.findOne(id));
