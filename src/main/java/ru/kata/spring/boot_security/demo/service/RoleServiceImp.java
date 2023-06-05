@@ -5,9 +5,8 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.model.Role;
 import ru.kata.spring.boot_security.demo.repositories.RoleJpaRep;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
+
 @Service
 public class RoleServiceImp implements RoleService {
     private final RoleJpaRep roleJpaRep;

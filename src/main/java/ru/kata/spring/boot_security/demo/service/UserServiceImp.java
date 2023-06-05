@@ -67,7 +67,7 @@ public class UserServiceImp implements UserDetailsService, UserService {
         String oldPassword = oldUser.getPassword();
         if (user.getPassword() == null || user.getPassword().isEmpty()) {
             user.setPassword(oldPassword);
-        }else {
+        } else {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
         userJpaRep.save(user);

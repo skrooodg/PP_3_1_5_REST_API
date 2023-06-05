@@ -1,4 +1,4 @@
-const userUrl = 'http://localhost:8080/api/user';
+const userUrl = 'http://localhost:8080/api/currentUser';
 
 
 function getUserPage() {
@@ -7,9 +7,9 @@ function getUserPage() {
 }
 
 function getInformationAboutUser(user) {
-    const tableBody = document.getElementById('userTableBody');
-    let res = '';
-    res =
+
+    let result = '';
+    result =
         `<tr>
     <td>${user.id}</td>
     <td>${user.name}</td>
@@ -18,8 +18,7 @@ function getInformationAboutUser(user) {
     <td>${user.userName}</td>
     <td id=${'role' + user.id}>${user.role.map(r => r.role).join(' ')}</td>
 </tr>`
-
-    tableBody.innerHTML = res;
+    document.getElementById('userTableBody').innerHTML = result;
 }
 
 getUserPage();

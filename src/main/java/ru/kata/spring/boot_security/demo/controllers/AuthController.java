@@ -12,7 +12,6 @@ import ru.kata.spring.boot_security.demo.service.UserService;
 import java.security.Principal;
 
 @RestController
-//@RequestMapping("/api")
 public class AuthController {
     private final UserService userService;
     @Autowired
@@ -20,7 +19,7 @@ public class AuthController {
         this.userService = userService;
     }
 
-    @GetMapping("/api/user")
+    @GetMapping("/api/currentUser")
     public ResponseEntity<User> showUser(Principal principal) {
         User user = userService.findByName(principal.getName());
         return new ResponseEntity<>(user, HttpStatus.OK);

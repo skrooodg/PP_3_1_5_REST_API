@@ -15,7 +15,6 @@ function getAdminPage() {
 }
 
 function loadTable(listAllUsers) {
-    const tableBody = document.getElementById('tableBodyAdmin');
     let res = '';
     for (let user of listAllUsers) {
         res +=
@@ -36,8 +35,9 @@ function loadTable(listAllUsers) {
                     onclick="deleteModal(${user.id})">Delete</button></td>
             </tr>`
     }
-    tableBody.innerHTML = res;
+    document.getElementById('tableBodyAdmin').innerHTML = res;
 }
+
 getAdminPage();
 
 
@@ -67,14 +67,13 @@ document.getElementById('newUserForm').addEventListener('submit', (e) => {
             role: rolesAddUser
         })
     })
-        .then((response) =>  {
+        .then((response) => {
             if (response.ok) {
                 getAllUsers()
                 document.getElementById("all-users-tab").click()
             }
-    })
+        })
 })
-
 
 
 // Закрытие модального окна
@@ -115,10 +114,10 @@ async function editUser() {
     let emailValue = document.getElementById("editEmail").value;
     let passwordValue = document.getElementById("editPassword").value;
     let listOfRole = [];
-    for (let i=0; i<form_ed.roles.options.length; i++) {
+    for (let i = 0; i < form_ed.roles.options.length; i++) {
         if (form_ed.roles.options[i].selected) {
-            let tmp={};
-            tmp["id"]=form_ed.roles.options[i].value
+            let tmp = {};
+            tmp["id"] = form_ed.roles.options[i].value
             listOfRole.push(tmp);
         }
     }
